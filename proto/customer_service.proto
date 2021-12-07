@@ -1,6 +1,6 @@
 syntax = "proto3";
-package protocol;
-option go_package = "github.com/sreeharikmarar/grpc_dummy/server/go/protocol";
+package grpc_dummy;
+option go_package = "./pb";
 
 service CustomerService {
   rpc ListPerson(RequestType) returns (stream Person) {};

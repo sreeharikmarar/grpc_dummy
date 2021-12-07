@@ -8,7 +8,7 @@ import (
 
 	"golang.org/x/net/context"
 
-	pb "github.com/sreeharikmarar/grpc_dummy"
+	"github.com/sreeharikmarar/grpc_dummy/pb"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
