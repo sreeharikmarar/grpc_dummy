@@ -1,0 +1,28 @@
+syntax = "proto3";
+package protocol;
+option go_package = "github.com/sreeharikmarar/grpc_dummy/server/go/protocol";
+
+service CustomerService {
+  rpc ListPerson(RequestType) returns (stream Person) {};
+  rpc AddPerson(Person) returns (ResponseType) {};
+  rpc Ping(PingRequest) returns (PongResponse) {};
+}
+
+message ResponseType {
+}
+
+message RequestType {
+}
+
+message PingRequest {
+}
+
+message PongResponse {
+  string pong = 1;
+}
+
+message Person {
+  string name = 1;
+  int32 age = 2;
+  repeated string tags = 3;
+}
