@@ -1,6 +1,6 @@
 # gRPC example
 
-## Pre requisite
+## Pre-requisite
 
 #### Protocol buffer installation
 ```
