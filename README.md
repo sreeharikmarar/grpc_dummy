@@ -56,7 +56,7 @@ To run the application, you need to run:
 SERVER_PORT=8080 ./grpc-dummy
 ```
 
-Use `grpc-ui`` to connect to application
+Use [grpc-ui](https://github.com/fullstorydev/grpcui) to connect to the application
 
 ```sh
 $: grpcui --plaintext localhost:8080
