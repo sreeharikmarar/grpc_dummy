@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grpc-dummy
+  labels:
+    app: grpc-dummy
+    service: grpc-dummy
+spec:
+  ports:
+  - port: 8080
+    name: grpc
+  selector:
+    app: grpc-dummy
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc-dummy
+  labels:
+    app: grpc-dummy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grpc-dummy
+  template:
+    metadata:
+      labels:
+        app: grpc-dummy
+    spec:
+      containers:
+      - name: server
+        image: docker.io/sreeharikmarar/grpc-dummy:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080

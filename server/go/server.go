@@ -70,10 +70,9 @@ func getServerPort() int {
 	if serverPort != "" {
 		port, err := strconv.Atoi(serverPort)
 		if err != nil {
-			return 3000
+			return 8080
 		}
 		return port
 	}
-
-	return 3000
+	return 8080
 }
