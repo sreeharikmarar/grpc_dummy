@@ -4,6 +4,7 @@ import (
 	"log"
 	"net"
 	"os"
+	"strconv"
 	"sync"
 
 	"golang.org/x/net/context"
@@ -46,9 +47,9 @@ func (cs *customerService) Ping(c context.Context, p *pb.PingRequest) (*pb.PongR
 }
 
 func main() {
-	port := os.Getenv("SERVER_PORT")
+	port := getServerPort()
 	log.Printf("starting server on port: %v", port)
-	lis, err := net.Listen("tcp", ":"+port)
+	lis, err := net.Listen("tcp", ":"+strconv.Itoa(port))
 	if err != nil {
 		log.Fatalf("faild to listen: %v", err)
 	}
@@ -61,4 +62,18 @@ func main() {
 	pb.RegisterCustomerServiceServer(server, new(customerService))
 	reflection.Register(server)
 	server.Serve(lis)
+}
+
+func getServerPort() int {
+	serverPort := os.Getenv("SERVER_PORT")
+
+	if serverPort != "" {
+		port, err := strconv.Atoi(serverPort)
+		if err != nil {
+			return 3000
+		}
+		return port
+	}
+
+	return 3000
 }
