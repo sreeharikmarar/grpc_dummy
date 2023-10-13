@@ -9,6 +9,7 @@ spec:
   ports:
   - port: 8080
     name: grpc
+    protocol: TCP
   selector:
     app: grpc-dummy
 ---
@@ -31,6 +32,6 @@ spec:
       containers:
       - name: server
         image: docker.io/sreeharikmarar/grpc-dummy:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080

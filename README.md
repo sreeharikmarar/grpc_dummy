@@ -60,14 +60,36 @@ Use [grpc-ui](https://github.com/fullstorydev/grpcui) to connect to the applicat
 
 ```sh
 $: grpcui --plaintext localhost:8080
-gRPC Web UI available at http://127.0.0.1:51685/
+gRPC Web UI available at http://127.0.0.1:61120/
 ```
 
-Access the application on http://127.0.0.1:51685/ , you will see
+Access the application on http://127.0.0.1:61120/ , you will see
 
 ![image](./assets/image.png)
 
 
+## Deploy on K8s Environment
+
+```sh
+kubectl apply -f k8s/deployment.yaml
+```
+
+Use kubectl port forward
+
+```sh
+kubectl port-forward svc/grpc-dummy -n default 8080:8080
+
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+```
+
+User [grpc-ui](https://github.com/fullstorydev/grpcui) to connect
+
+```sh
+grpcui --plaintext localhost:8080
+
+gRPC Web UI available at http://127.0.0.1:62290/
+```
 ## Development
 ### Pre-requisite
 
